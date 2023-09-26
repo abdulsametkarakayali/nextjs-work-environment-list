@@ -4,6 +4,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import { format } from 'date-fns';
+import { IoLocationSharp } from 'react-icons/io5';
+import {FaLaptopCode, FaCoffee, FaDesktop } from 'react-icons/fa';
+import {BiWifi} from 'react-icons/bi';
+import { TiWeatherSnow} from 'react-icons/ti';
+
 
 import useCountries from "@/app/hooks/useCountries";
 import { 
@@ -14,7 +19,6 @@ import {
 
 import HeartButton from "../HeartButton";
 import Button from "../Button";
-import ClientOnly from "../ClientOnly";
 
 interface ListingCardProps {
   data: SafeListing;
@@ -59,17 +63,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
     return data.price;
   }, [reservation, data.price]);
 
-  const reservationDate = useMemo(() => {
-    if (!reservation) {
-      return null;
-    }
-  
-    const start = new Date(reservation.startDate);
-    const end = new Date(reservation.endDate);
-
-    return `${format(start, 'PP')} - ${format(end, 'PP')}`;
-  }, [reservation]);
-
   return (
     <div 
       onClick={() => router.push(`/listings/${data.id}`)} 
@@ -108,20 +101,24 @@ const ListingCard: React.FC<ListingCardProps> = ({
             />
           </div>
         </div>
-        <div className="font-semibold text-lg">
-          {location?.region}, {location?.label}
+        <div className=" text-md flex flex-row gap-2 items-center">
+          <IoLocationSharp size={14} /> {data.title}
         </div>
-        <div className="font-light text-neutral-500">
-          {reservationDate || data.category}
-        </div>
-        <div className="flex flex-row items-center gap-1">
-          <div className="font-semibold">
-            $ {price}
-          </div>
-          {!reservation && (
-            <div className="font-light">night</div>
-          )}
-        </div>
+        <div className=" text-md flex flex-row gap-2 items-center">
+          <FaLaptopCode className="fill-red"/>Çalışma Ortamı: 7/10
+        </div>   
+        <div className=" text-md flex flex-row gap-2 items-center">
+          <FaCoffee />içecek Ücreti: 60₺ - 100₺ Arası
+        </div>        
+        <div className=" text-md flex flex-row gap-2 items-center">
+          <BiWifi className="fill-red"/>internet: 7/10
+        </div>   
+        <div className=" text-md flex flex-row gap-2 items-center">
+          <TiWeatherSnow />Klima:Var
+        </div>   
+        <div className=" text-md flex flex-row gap-2 items-center">
+          <FaDesktop className="fill-red"/>Büyük Masa: Var
+        </div>   
         {onAction && actionLabel && (
           <Button
             disabled={disabled}

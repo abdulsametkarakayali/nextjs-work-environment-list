@@ -23,32 +23,8 @@ const Search = () => {
       return getByValue(locationValue as string)?.label;
     }
 
-    return 'Anywhere';
+    return 'Tüm Şehirler';
   }, [locationValue, getByValue]);
-
-  const durationLabel = useMemo(() => {
-    if (startDate && endDate) {
-      const start = new Date(startDate as string);
-      const end = new Date(endDate as string);
-      let diff = differenceInDays(end, start);
-
-      if (diff === 0) {
-        diff = 1;
-      }
-
-      return `${diff} Days`;
-    }
-
-    return 'Any Week'
-  }, [startDate, endDate]);
-
-  const guestLabel = useMemo(() => {
-    if (guestCount) {
-      return `${guestCount} Guests`;
-    }
-
-    return 'Add Guests';
-  }, [guestCount]);
 
   return ( 
     <div
@@ -84,22 +60,7 @@ const Search = () => {
         </div>
         <div 
           className="
-            hidden 
-            sm:block 
             text-sm 
-            font-semibold 
-            px-6 
-            border-x-[1px] 
-            flex-1 
-            text-center
-          "
-        >
-          {durationLabel}
-        </div>
-        <div 
-          className="
-            text-sm 
-            pl-6 
             pr-2 
             text-gray-600 
             flex 
@@ -108,7 +69,6 @@ const Search = () => {
             gap-3
           "
         >
-          <div className="hidden sm:block">{guestLabel}</div>
           <div 
             className="
               p-2 

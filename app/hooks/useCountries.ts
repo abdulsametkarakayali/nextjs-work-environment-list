@@ -1,24 +1,25 @@
-import countries from 'world-countries';
+// useLocations.js
+import locationsData from '../api/cities/cities_of_turkey.json';
 
-const formattedCountries = countries.map((country) => ({
-  value: country.cca2,
-  label: country.name.common,
-  flag: country.flag,
-  latlng: country.latlng,
-  region: country.region,
+const formattedLocations = locationsData.map((city) => ({
+  value: city.name,
+  label: city.name,
+  latlng: [city.latitude,city.longitude],
+  districts: city.region,
 }));
 
 const useCountries = () => {
-  const getAll = () => formattedCountries;
+  const getAll = () => formattedLocations;
 
-  const getByValue = (value: string) => {
-    return formattedCountries.find((item) => item.value === value);
-  }
+  const getByValue = (value) => {
+    return formattedLocations.find((item) => item.value === value);
+  };
 
   return {
     getAll,
-    getByValue
-  }
+    getByValue,
+  };
 };
 
 export default useCountries;
+

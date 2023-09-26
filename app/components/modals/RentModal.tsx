@@ -114,10 +114,10 @@ const RentModal = () => {
 
   const actionLabel = useMemo(() => {
     if (step === STEPS.PRICE) {
-      return 'Create'
+      return 'Oluştur'
     }
 
-    return 'Next'
+    return 'İleri'
   }, [step]);
 
   const secondaryActionLabel = useMemo(() => {
@@ -125,14 +125,14 @@ const RentModal = () => {
       return undefined
     }
 
-    return 'Back'
+    return 'Geri'
   }, [step]);
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Which of these best describes your place?"
-        subtitle="Pick a category"
+        title="Bunlardan hangisi çalışma alanınızı en iyi şekilde tanımlıyor?"
+        subtitle="Çalışma Ortamı Seçiniz"
       />
       <div 
         className="
@@ -163,8 +163,8 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Where is your place located?"
-          subtitle="Help guests find you!"
+          title="Çalışma Alanı Hangi Şehirde"
+          subtitle="Lütfen şehri seçiniz"
         />
         <CountrySelect 
           value={location} 
@@ -179,28 +179,21 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Share some basics about your place"
-          subtitle="What amenitis do you have?"
+          title="Ortam bilgisi"
+          subtitle="Ortam değerlendirmesi bilginize ihtiyacımız var"
         />
         <Counter 
           onChange={(value) => setCustomValue('guestCount', value)}
           value={guestCount}
-          title="Guests" 
-          subtitle="How many guests do you allow?"
+          title="Çalışma Ortamı Puanla" 
+          subtitle="Lütfen 10 puan üzerinden değerlendiriniz."
         />
         <hr />
         <Counter 
           onChange={(value) => setCustomValue('roomCount', value)}
           value={roomCount}
-          title="Rooms" 
-          subtitle="How many rooms do you have?"
-        />
-        <hr />
-        <Counter 
-          onChange={(value) => setCustomValue('bathroomCount', value)}
-          value={bathroomCount}
-          title="Bathrooms" 
-          subtitle="How many bathrooms do you have?"
+          title="İnternet Hızı" 
+          subtitle="Lütfen 10 puan üzerinden değerlendiriniz."
         />
       </div>
     )
@@ -210,8 +203,8 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Add a photo of your place"
-          subtitle="Show guests what your place looks like!"
+          title="Çalışma Ortamı Görseli"
+          subtitle="Çalışma ortamının görselini bu alana ekleyebilirsiniz.!"
         />
         <ImageUpload
           onChange={(value) => setCustomValue('imageSrc', value)}
@@ -225,12 +218,12 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="How would you describe your place?"
-          subtitle="Short and sweet works best!"
+          title="Çalışma Ortamı Hakkında"
+          subtitle="Ortam Hakkında Bilginize İhtiyacımız Var"
         />
         <Input
           id="title"
-          label="Title"
+          label="Başlık"
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -239,7 +232,7 @@ const RentModal = () => {
         <hr />
         <Input
           id="description"
-          label="Description"
+          label="Açıklama"
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -252,13 +245,22 @@ const RentModal = () => {
   if (step === STEPS.PRICE) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading
-          title="Now, set your price"
-          subtitle="How much do you charge per night?"
+         <Heading
+          title="İçecek Ücretleri"
+          subtitle="Ortalama içecek Ücretleri"
         />
+        <div className='
+         grid 
+          grid-cols-1 
+          md:grid-cols-2 
+          gap-3
+          max-h-[50vh]
+          overflow-y-auto '>
+
+       
         <Input
           id="price"
-          label="Price"
+          label="Fiyat"
           formatPrice 
           type="number" 
           disabled={isLoading}
@@ -266,6 +268,21 @@ const RentModal = () => {
           errors={errors}
           required
         />
+         <Input
+          id="price"
+          label="Fiyat"
+          formatPrice 
+          type="number" 
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+         </div>
+
+
+
+
       </div>
     )
   }
@@ -274,7 +291,7 @@ const RentModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title="Airbnb your home!"
+      title=" Çalışma Alanı Ekle!"
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}

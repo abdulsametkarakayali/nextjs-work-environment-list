@@ -26,8 +26,8 @@ const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">Op
 const Map: React.FC<MapProps> = ({ center }) => {
   return (
       <MapContainer 
-        center={center as L.LatLngExpression || [39, -0.09]} 
-        zoom={center ? 2 : 4} 
+        center={center as L.LatLngExpression || [38, 33]} 
+        zoom={center ? 6 : 5} 
         scrollWheelZoom={true} 
         className="h-[35vh] rounded-lg"
       >

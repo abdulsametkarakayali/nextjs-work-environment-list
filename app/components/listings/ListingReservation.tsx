@@ -6,7 +6,8 @@ import Button from "../Button";
 import Calendar from "../inputs/Calendar";
 
 interface ListingReservationProps {
-  price: number;
+  drinkPriceStart: number;
+  drinkPriceEnd: number;
   dateRange: Range,
   totalPrice: number;
   onChangeDate: (value: Range) => void;
@@ -18,7 +19,8 @@ interface ListingReservationProps {
 const ListingReservation: React.FC<
   ListingReservationProps
 > = ({
-  price,
+  drinkPriceStart,
+  drinkPriceEnd,
   dateRange,
   totalPrice,
   onChangeDate,

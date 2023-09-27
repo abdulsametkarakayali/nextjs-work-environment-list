@@ -2,13 +2,18 @@ import prisma from "@/app/libs/prismadb";
 
 export interface IListingsParams {
   userId?: string;
-  guestCount?: number;
+  address?: string;
+  workingEnvironment?: number;
   roomCount?: number;
-  bathroomCount?: number;
   startDate?: string;
   endDate?: string;
   locationValue?: string;
   category?: string;
+  drinkPriceStart?: number;
+  drinkPriceEnd?: number;
+  Internet?: string;
+  airConditioning?:boolean;
+  bigTable?:boolean;
 }
 
 export default async function getListings(
@@ -16,10 +21,8 @@ export default async function getListings(
 ) {
   try {
     const {
-      userId,
-      roomCount, 
-      guestCount, 
-      bathroomCount, 
+      userId, 
+      workingEnvironment, 
       locationValue,
       startDate,
       endDate,
@@ -35,25 +38,11 @@ export default async function getListings(
     if (category) {
       query.category = category;
     }
-
-    if (roomCount) {
-      query.roomCount = {
-        gte: +roomCount
+    if (workingEnvironment) {
+      query.workingEnvironment = {
+        gte: +workingEnvironment
       }
     }
-
-    if (guestCount) {
-      query.guestCount = {
-        gte: +guestCount
-      }
-    }
-
-    if (bathroomCount) {
-      query.bathroomCount = {
-        gte: +bathroomCount
-      }
-    }
-
     if (locationValue) {
       query.locationValue = locationValue;
     }

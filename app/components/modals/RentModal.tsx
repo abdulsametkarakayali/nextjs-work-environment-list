@@ -51,21 +51,21 @@ const RentModal = () => {
     defaultValues: {
       category: '',
       location: null,
-      guestCount: 1,
-      roomCount: 1,
-      bathroomCount: 1,
+      internet: 1,
+      workingEnvironment: 1,
       imageSrc: '',
-      price: 1,
+      drinkPriceStart: 1,
+      drinkPriceEnd: 2,
       title: '',
       description: '',
+      address: '',
     }
   });
 
   const location = watch('location');
   const category = watch('category');
-  const guestCount = watch('guestCount');
-  const roomCount = watch('roomCount');
-  const bathroomCount = watch('bathroomCount');
+  const internet = watch('internet');
+  const workingEnvironment = watch('workingEnvironment');
   const imageSrc = watch('imageSrc');
 
   const Map = useMemo(() => dynamic(() => import('../Map'), { 
@@ -95,7 +95,7 @@ const RentModal = () => {
     }
     
     setIsLoading(true);
-
+    console.log(data);
     axios.post('/api/listings', data)
     .then(() => {
       toast.success('Listing created!');
@@ -183,15 +183,15 @@ const RentModal = () => {
           subtitle="Ortam değerlendirmesi bilginize ihtiyacımız var"
         />
         <Counter 
-          onChange={(value) => setCustomValue('guestCount', value)}
-          value={guestCount}
+          onChange={(value) => setCustomValue('workingEnvironment', value)}
+          value={workingEnvironment}
           title="Çalışma Ortamı Puanla" 
           subtitle="Lütfen 10 puan üzerinden değerlendiriniz."
         />
         <hr />
         <Counter 
-          onChange={(value) => setCustomValue('roomCount', value)}
-          value={roomCount}
+          onChange={(value) => setCustomValue('internet', value)}
+          value={internet}
           title="İnternet Hızı" 
           subtitle="Lütfen 10 puan üzerinden değerlendiriniz."
         />
@@ -238,6 +238,14 @@ const RentModal = () => {
           errors={errors}
           required
         />
+        <hr />
+        <Input
+          id="address"
+          label="Açık Adresi"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+        />
       </div>
     )
   }
@@ -259,7 +267,7 @@ const RentModal = () => {
 
        
         <Input
-          id="price"
+          id="drinkPriceStart"
           label="Fiyat"
           formatPrice 
           type="number" 
@@ -269,7 +277,7 @@ const RentModal = () => {
           required
         />
          <Input
-          id="price"
+          id="drinkPriceEnd"
           label="Fiyat"
           formatPrice 
           type="number" 
@@ -279,10 +287,6 @@ const RentModal = () => {
           required
         />
          </div>
-
-
-
-
       </div>
     )
   }

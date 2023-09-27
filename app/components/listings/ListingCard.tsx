@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
-import { format } from 'date-fns';
 import { IoLocationSharp } from 'react-icons/io5';
 import {FaLaptopCode, FaCoffee, FaDesktop } from 'react-icons/fa';
 import {BiWifi} from 'react-icons/bi';
@@ -102,22 +101,22 @@ const ListingCard: React.FC<ListingCardProps> = ({
           </div>
         </div>
         <div className=" text-md flex flex-row gap-2 items-center">
-          <IoLocationSharp size={14} /> {data.title}
+          <IoLocationSharp className="text-red-600" size={14} /> {data.title}
         </div>
         <div className=" text-md flex flex-row gap-2 items-center">
-          <FaLaptopCode className="fill-red"/>Çalışma Ortamı: 7/10
+          <FaLaptopCode className="text-stone-400"/>Çalışma Ortamı:{data.workingEnvironment}/10
         </div>   
         <div className=" text-md flex flex-row gap-2 items-center">
-          <FaCoffee />içecek Ücreti: 60₺ - 100₺ Arası
+          <FaCoffee className="text-black"/>içecek Ücreti: {data.drinkPriceStart}₺ - {data.drinkPriceEnd}₺
         </div>        
         <div className=" text-md flex flex-row gap-2 items-center">
-          <BiWifi className="fill-red"/>internet: 7/10
+          <BiWifi className="text-orange-500"/>internet Kalitesi: {data.internet}/10
         </div>   
         <div className=" text-md flex flex-row gap-2 items-center">
-          <TiWeatherSnow />Klima:Var
+          <TiWeatherSnow className="text-sky-400" />Klima:{data.airConditioning?"Var":"Yok"}
         </div>   
         <div className=" text-md flex flex-row gap-2 items-center">
-          <FaDesktop className="fill-red"/>Büyük Masa: Var
+          <FaDesktop className="fill-red"/>Büyük Masa: {data.bigTable?"Var":"Yok"}
         </div>   
         {onAction && actionLabel && (
           <Button

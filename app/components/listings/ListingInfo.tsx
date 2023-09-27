@@ -2,12 +2,14 @@
 
 import dynamic from "next/dynamic";
 import { IconType } from "react-icons";
+import { FaSourcetree } from "react-icons/fa";
 
 import useCountries from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
 
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
+import { hr } from "date-fns/locale";
 
 const Map = dynamic(() => import('../Map'), { 
   ssr: false 
@@ -15,10 +17,10 @@ const Map = dynamic(() => import('../Map'), {
 
 interface ListingInfoProps {
   user: SafeUser,
+  address: string,
   description: string;
-  guestCount: number;
+  workingEnvironment: number;
   roomCount: number;
-  bathroomCount: number;
   category: {
     icon: IconType,
     label: string;
@@ -29,10 +31,10 @@ interface ListingInfoProps {
 
 const ListingInfo: React.FC<ListingInfoProps> = ({
   user,
+  address,
   description,
-  guestCount,
+  workingEnvironment,
   roomCount,
-  bathroomCount,
   category,
   locationValue,
 }) => {
@@ -67,13 +69,13 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
           "
         >
           <div>
-            {guestCount} 
+            {workingEnvironment} 
           </div>
           <div>
             {roomCount} 
           </div>
           <div>
-            {bathroomCount} 
+            {} 
           </div>
         </div>
       </div>
@@ -85,6 +87,10 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
           description={category?.description} 
         />
       )}
+      {address && (<div className="
+      text-lg font-light flex flex-row text-neutral-500">
+       <FaSourcetree size={24}/> {address}
+      </div>)}
       <hr />
       <div className="
       text-lg font-light text-neutral-500">

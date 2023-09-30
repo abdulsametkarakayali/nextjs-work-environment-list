@@ -119,11 +119,11 @@ const UserMenu: React.FC<UserMenuProps> = ({
             ) : (
               <>
                 <MenuItem 
-                  label="Login" 
+                  label="Giriş" 
                   onClick={loginModal.onOpen}
                 />
                 <MenuItem 
-                  label="Sign up" 
+                  label="Kayıt" 
                   onClick={registerModal.onOpen}
                 />
               </>

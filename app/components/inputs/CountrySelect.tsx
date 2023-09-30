@@ -6,9 +6,9 @@ import useCountries from '@/app/hooks/useCountries';
 
 export type CountrySelectValue = {
   label: string;
-  latlng: number[],
-  region: string;
-  value: string
+  latlng: string[],
+  value: string,
+  region: string
 }
 
 interface CountrySelectProps {

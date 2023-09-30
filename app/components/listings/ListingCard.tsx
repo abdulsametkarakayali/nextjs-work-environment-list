@@ -54,14 +54,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
     onAction?.(actionId)
   }, [disabled, onAction, actionId]);
 
-  const price = useMemo(() => {
-    if (reservation) {
-      return reservation.totalPrice;
-    }
-
-    return data.price;
-  }, [reservation, data.price]);
-
   return (
     <div 
       onClick={() => router.push(`/listings/${data.id}`)} 

@@ -20,6 +20,7 @@ import CountrySelect from "../inputs/CountrySelect";
 import { categories } from '../navbar/Categories';
 import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
+import { Checkbox } from '../inputs/Checkbox';
 import Heading from '../Heading';
 
 enum STEPS {
@@ -35,6 +36,8 @@ const RentModal = () => {
   const router = useRouter();
   const rentModal = useRentModal();
 
+  const [isChecked, setIsChecked] = useState(false);
+    // Checkbox'ın durumunu burada kullanabilirsiniz
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(STEPS.CATEGORY);
 
@@ -54,6 +57,7 @@ const RentModal = () => {
       internet: 1,
       workingEnvironment: 1,
       imageSrc: '',
+      bigTable:true,
       drinkPriceStart: 1,
       drinkPriceEnd: 2,
       title: '',
@@ -180,7 +184,7 @@ const RentModal = () => {
       <div className="flex flex-col gap-8">
         <Heading
           title="Ortam bilgisi"
-          subtitle="Ortam değerlendirmesi bilginize ihtiyacımız var"
+          subtitle="Ortam değerlendirmesi bilginize ihtiyacımız var "
         />
         <Counter 
           onChange={(value) => setCustomValue('workingEnvironment', value)}
@@ -195,6 +199,7 @@ const RentModal = () => {
           title="İnternet Hızı" 
           subtitle="Lütfen 10 puan üzerinden değerlendiriniz."
         />
+      <p>Seçili durumu: {isChecked ? 'Seçildi' : 'Seçilmedi'}</p>
       </div>
     )
   }

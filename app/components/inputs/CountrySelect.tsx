@@ -6,7 +6,7 @@ import useCountries from '@/app/hooks/useCountries';
 
 export type CountrySelectValue = {
   label: string;
-  latlng: string[],
+  latlng: number[],
   value: string,
   region: string
 }

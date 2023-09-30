@@ -11,7 +11,7 @@ const formattedLocations = locationsData.map((city) => ({
 const useCountries = () => {
   const getAll = () => formattedLocations;
 
-  const getByValue = (value) => {
+  const getByValue = (value:string) => {
     return formattedLocations.find((item) => item.value === value);
   };
 

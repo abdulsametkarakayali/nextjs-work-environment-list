@@ -130,9 +130,10 @@ const ListingClient: React.FC<ListingClientProps> = ({
             category={category}
             description={listing.description}
             locationValue={listing.locationValue}
-            address={listing.address !== null ? listing.address : undefined} 
-            workingEnvironment={listing.workingEnvironment !== null ? listing.workingEnvironment : undefined} 
+            address={listing.address !== null ? listing.address : ''} 
+            workingEnvironment={listing.workingEnvironment !== null ? listing.workingEnvironment : 1} 
             />
+
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ L.Icon.Default.mergeOptions({
 });
 
 interface MapProps {
-  center?: string,[]
+  center?: string[]
 }
 
 const url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";

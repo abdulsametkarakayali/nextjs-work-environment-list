@@ -17,7 +17,7 @@ const Map = dynamic(() => import('../Map'), {
 
 interface ListingInfoProps {
   user: SafeUser,
-  address?: string,
+  address: string,
   description: string;
   workingEnvironment?: number;
   category: {
@@ -41,7 +41,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
   const coordinates = getByValue(locationValue)?.latlng
 
   return ( 
-    <div className="col-span-4 flex flex-col gap-8">
+    <div className="col-span-12 flex flex-col gap-8">
       <div className="flex flex-col gap-2">
         <div 
           className="

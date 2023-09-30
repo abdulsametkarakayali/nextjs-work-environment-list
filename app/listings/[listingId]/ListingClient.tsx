@@ -120,9 +120,8 @@ const ListingClient: React.FC<ListingClientProps> = ({
           <div 
             className="
               grid 
-              grid-cols-1 
-              md:grid-cols-7 
-              md:gap-10 
+              grid-cols-12 
+              md:grid-cols-12
               mt-6
             "
           >
@@ -134,16 +133,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
             address={listing.address !== null ? listing.address : undefined} 
             workingEnvironment={listing.workingEnvironment !== null ? listing.workingEnvironment : undefined} 
             />
-            <div 
-              className="
-                order-first 
-                mb-10 
-                md:order-last 
-                md:col-span-3
-              "
-            >
-            
-            </div>
           </div>
         </div>
       </div>

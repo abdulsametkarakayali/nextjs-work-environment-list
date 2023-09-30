@@ -1,13 +1,16 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link"
 import { useRouter } from "next/navigation";
 
 const Logo = () => {
   const router = useRouter();
 
   return ( 
+    <Link href="/" className="flex items-center">
     <div className="flex flex-row items-center gap-2 text-center">
+     
     <Image
       onClick={() => router.push('/')}
       className="hidden md:block cursor-pointer" 
@@ -20,6 +23,7 @@ const Logo = () => {
     Çalışma Ortamım
   </h1>
     </div>
+    </Link>
    );
 }
  

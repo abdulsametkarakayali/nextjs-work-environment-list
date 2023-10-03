@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+
+Sitemap: hhttps://nextjs-work-environment-list.vercel.app/sitemap.xml

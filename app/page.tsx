@@ -8,6 +8,11 @@ import getListings, {
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "./components/ClientOnly";
 
+export const metadata = {
+  title:"En Güzel Ders Çalışma Mekanları",
+  description:"Bilgisayarınızı ve kitaplarınız alıp gidip ders çalışabileceğiniz en güzel ortamlar"
+}
+
 interface HomeProps {
   searchParams: IListingsParams
 };

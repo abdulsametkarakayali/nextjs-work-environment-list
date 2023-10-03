@@ -7,7 +7,7 @@ import { IoLocationSharp } from 'react-icons/io5';
 import {FaLaptopCode, FaCoffee, FaDesktop } from 'react-icons/fa';
 import {BiWifi} from 'react-icons/bi';
 import { TiWeatherSnow} from 'react-icons/ti';
-
+import { createSEOFriendlyURL } from '../../utils/seoFriendlyURL';
 
 import useCountries from "@/app/hooks/useCountries";
 import { 
@@ -42,6 +42,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   const { getByValue } = useCountries();
 
   const location = getByValue(data.locationValue);
+  const seoFriendlyURL = createSEOFriendlyURL(data.title);
 
   const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -55,8 +56,10 @@ const ListingCard: React.FC<ListingCardProps> = ({
   }, [disabled, onAction, actionId]);
 
   return (
+
+    
     <div 
-      onClick={() => router.push(`/listings/${data.id}`)} 
+      onClick={() => router.push(`/listings/${seoFriendlyURL}/${data.id}`)} 
       className="col-span-1 cursor-pointer group"
     >
       <div className="flex flex-col gap-2 w-full">

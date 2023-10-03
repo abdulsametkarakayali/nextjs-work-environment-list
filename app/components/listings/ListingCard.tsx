@@ -11,8 +11,7 @@ import { createSEOFriendlyURL } from '../../utils/seoFriendlyURL';
 
 import useCountries from "@/app/hooks/useCountries";
 import { 
-  SafeListing, 
-  SafeReservation, 
+  SafeListing,  
   SafeUser 
 } from "@/app/types";
 
@@ -21,7 +20,6 @@ import Button from "../Button";
 
 interface ListingCardProps {
   data: SafeListing;
-  reservation?: SafeReservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
@@ -31,7 +29,6 @@ interface ListingCardProps {
 
 const ListingCard: React.FC<ListingCardProps> = ({
   data,
-  reservation,
   onAction,
   disabled,
   actionLabel,
@@ -41,7 +38,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
   const router = useRouter();
   const { getByValue } = useCountries();
 
-  const location = getByValue(data.locationValue);
   const seoFriendlyURL = createSEOFriendlyURL(data.title);
 
   const handleCancel = useCallback(

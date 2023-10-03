@@ -11,15 +11,14 @@ import { log } from "console";
 
 interface IParams {
   listingId?: string;
+  slug?: string;
 }
+ 
+
 
 export async function generateMetadata({
-  params,
-}: {
-  params: {
-    slug: string;
-  };
-}) {
+   params }: { params: IParams })
+  {
   try {
     console.log(params);
     

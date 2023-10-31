@@ -55,7 +55,7 @@ const RentModal = () => {
       location: null,
       internet: 1,
       workingEnvironment: 1,
-      imageSrc: '',
+      imageSrc: [],
       bigTable:true,
       drinkPriceStart: 1,
       drinkPriceEnd: 2,

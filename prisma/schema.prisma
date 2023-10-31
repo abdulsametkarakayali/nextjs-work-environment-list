@@ -50,7 +50,7 @@ model Listing {
   title String
   description String
   address String?
-  imageSrc String
+  imageSrc String[]
   createdAt DateTime @default(now())
   category  String
   workingEnvironment Int?

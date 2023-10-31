@@ -37,7 +37,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
 }) => {
   const router = useRouter();
   const { getByValue } = useCountries();
-
   const seoFriendlyURL = createSEOFriendlyURL(data.title);
 
   const handleCancel = useCallback(
@@ -77,7 +76,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
               group-hover:scale-110 
               transition
             "
-            src={data.imageSrc}
+            src={data.imageSrc[0]}
             alt="Listing"
           />
           <div className="

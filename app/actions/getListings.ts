@@ -5,9 +5,8 @@ export interface IListingsParams {
   address?: string;
   workingEnvironment?: number;
   roomCount?: number;
-  startDate?: string;
-  endDate?: string;
   locationValue?: string;
+  imageSrc?:string[];
   category?: string;
   drinkPriceStart?: number;
   drinkPriceEnd?: number;
@@ -15,7 +14,6 @@ export interface IListingsParams {
   airConditioning?:boolean;
   bigTable?:boolean;
 }
-
 export default async function getListings(
   params: IListingsParams
 ) {
@@ -24,8 +22,6 @@ export default async function getListings(
       userId, 
       workingEnvironment, 
       locationValue,
-      startDate,
-      endDate,
       category,
     } = params;
 
@@ -46,38 +42,16 @@ export default async function getListings(
     if (locationValue) {
       query.locationValue = locationValue;
     }
-
-    if (startDate && endDate) {
-      query.NOT = {
-        reservations: {
-          some: {
-            OR: [
-              {
-                endDate: { gte: startDate },
-                startDate: { lte: startDate }
-              },
-              {
-                startDate: { lte: endDate },
-                endDate: { gte: endDate }
-              }
-            ]
-          }
-        }
-      }
-    }
-
     const listings = await prisma.listing.findMany({
       where: query,
       orderBy: {
         createdAt: 'desc'
       }
     });
-
     const safeListings = listings.map((listing) => ({
       ...listing,
       createdAt: listing.createdAt.toISOString(),
-    }));
-
+    })); 
     return safeListings;
   } catch (error: any) {
     throw new Error(error);

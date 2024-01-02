@@ -20,8 +20,5 @@ const Container: React.FC<ContainerProps> = ({ children }) => {
     </div>
    );
 }
-
-yygyugugug
-deneme deneme deneme 24567788999
  
 export default Container;
